@@ -64,7 +64,7 @@ const pillars = [
   {
     icon: Gamepad2,
     title: 'Feel & Mechanics',
-    body: 'Hand-tuned movement, juicy feedback, and simulation fidelity that rewards repeat play.'
+    body: 'Hand-tuned movement, great feedback, and simulation fidelity that rewards repeat play.'
   },
   {
     icon: Map,
