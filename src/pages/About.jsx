@@ -24,10 +24,6 @@ const stack = [
   { name: 'Rojo', icon: Workflow },
   { name: 'Roact', icon: Gamepad2 },
   { name: 'Vite', icon: Rocket },
-  { name: 'React', icon: Sparkles },
-  { name: 'Networking', icon: Network },
-  { name: 'SQL / DuckDB', icon: Database },
-  { name: 'Tooling', icon: Wrench }
 ]
 
 const milestones = [
