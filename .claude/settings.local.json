@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(cmd.exe //c \"dir README.md\")",
+      "Bash(mkdir -p ~/.claude/skills)",
+      "Read(//c/Users/dzolb/.claude/skills/**)",
+      "Bash(grep -E \"^\\(superpowers|autoresearch|context7|tavily|playwright|claude-squad|firecrawl|promptfoo|container-use\\)$\")",
+      "Skill(commit-commands:commit-push-pr)",
+      "Bash(git checkout *)"
+    ]
+  }
+}
