@@ -7,7 +7,13 @@
       "Read(//c/Users/dzolb/.claude/skills/**)",
       "Bash(grep -E \"^\\(superpowers|autoresearch|context7|tavily|playwright|claude-squad|firecrawl|promptfoo|container-use\\)$\")",
       "Skill(commit-commands:commit-push-pr)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "mcp__Roblox_Studio__list_roblox_studios",
+      "mcp__Roblox_Studio__set_active_studio",
+      "mcp__Roblox_Studio__search_game_tree",
+      "mcp__Roblox_Studio__inspect_instance",
+      "mcp__Roblox_Studio__script_grep",
+      "mcp__Roblox_Studio__screen_capture"
     ]
   }
 }

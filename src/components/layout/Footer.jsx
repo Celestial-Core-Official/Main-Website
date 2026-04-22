@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Github, Mail, Sparkles, ArrowUpRight } from 'lucide-react'
+import { Github, Mail, MessageSquare, ArrowUpRight } from 'lucide-react'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
@@ -16,14 +16,7 @@ export default function Footer() {
     <footer className="relative mt-24 border-t border-white/5 bg-void/60">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
         <div>
-          <div className="flex items-center gap-2 font-display text-lg font-semibold">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue via-nebula-purple to-nebula-gold">
-              <Sparkles className="h-4 w-4 text-void" strokeWidth={2.5} />
-            </span>
-            <span>
-              Celestial<span className="text-gradient">Core</span>
-            </span>
-          </div>
+          <img src="/logo.png" alt="CelestialCore" className="h-8 w-auto object-contain" />
           <p className="mt-3 max-w-xs text-sm text-white/60">
             Systems-grade game and software engineering. Built by RealDzolat,
             headquartered in deep orbit.
@@ -55,21 +48,32 @@ export default function Footer() {
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             <li>
               <a
-                href="https://github.com/RealDzolat"
+                href="https://github.com/Dzolat"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
               >
-                <Github className="h-4 w-4" /> github.com/RealDzolat
+                <Github className="h-4 w-4" /> github.com/Dzolat
                 <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
               </a>
             </li>
             <li>
               <a
-                href="mailto:PLACEHOLDER@celestialcore.cc"
+                href="mailto:admin@celestialcore.cc"
                 className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
               >
-                <Mail className="h-4 w-4" /> PLACEHOLDER@celestialcore.cc
+                <Mail className="h-4 w-4" /> admin@celestialcore.cc
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://discord.gg/UkkJ2UKZ6W"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
+              >
+                <MessageSquare className="h-4 w-4" /> Discord
+                <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
               </a>
             </li>
           </ul>

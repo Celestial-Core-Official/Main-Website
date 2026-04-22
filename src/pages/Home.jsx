@@ -14,28 +14,13 @@ const HERO_TITLE = 'Celestial Core'
 
 const highlights = [
   {
-    title: 'PLACEHOLDER Flagship Roblox Title',
+    title: 'Factory Beyond',
     description:
-      'A genre-defining Luau-architected experience. PLACEHOLDER — replace with summary of flagship Roblox game.',
-    tags: ['Luau', 'Rojo', 'Roact'],
+      'An open-world Roblox factory game. Gather resources, build machines, and automate your way to something bigger. Currently in pre-alpha.',
+    tags: ['Luau', 'Rojo', 'Fusion'],
     href: '/games',
-    accent: 'blue'
-  },
-  {
-    title: 'PLACEHOLDER Systems Engine',
-    description:
-      "A high-performance runtime written in modern C++. PLACEHOLDER — describe the engine's purpose and hot path.",
-    tags: ['C++', 'CMake', 'Vulkan'],
-    href: '/projects',
-    accent: 'purple'
-  },
-  {
-    title: 'PLACEHOLDER Developer Tool',
-    description:
-      'A cross-platform TypeScript toolchain. PLACEHOLDER — describe what it automates and why people love it.',
-    tags: ['TypeScript', 'Node', 'Vite'],
-    href: '/projects',
-    accent: 'gold'
+    accent: 'blue',
+    image: '/games/factory-beyond.png'
   }
 ]
 
@@ -146,7 +131,7 @@ export default function Home() {
               variants={fadeUp}
               className="mt-10 flex flex-wrap items-center justify-center gap-2"
             >
-              {['Luau', 'TypeScript', 'C++', 'C#', 'Python', 'Rust'].map((t) => (
+              {['Luau', 'TypeScript', 'C++', 'C#', 'Python'].map((t) => (
                 <TechBadge key={t} label={t} />
               ))}
             </motion.div>

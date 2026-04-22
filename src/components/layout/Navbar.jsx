@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -43,14 +43,13 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <Link
           to="/"
-          className="group flex items-center gap-2 font-display text-lg font-semibold tracking-tight"
+          className="group flex items-center gap-2"
         >
-          <span className="relative grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue via-nebula-purple to-nebula-gold shadow-glow">
-            <Sparkles className="h-4 w-4 text-void" strokeWidth={2.5} />
-          </span>
-          <span className="text-white">
-            Celestial<span className="text-gradient">Core</span>
-          </span>
+          <img
+            src="/logo.png"
+            alt="CelestialCore"
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         <ul className="hidden items-center gap-1 rounded-full glass px-2 py-1.5 md:flex">

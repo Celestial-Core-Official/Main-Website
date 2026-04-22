@@ -6,52 +6,13 @@ import { pageTransition, fadeUp, stagger } from '../utils/animations.js'
 
 const games = [
   {
-    title: 'PLACEHOLDER: Project Nova',
+    title: 'Factory Beyond',
     description:
-      'A deeply simulated Roblox RPG. Luau-first ECS, deterministic networking, and hand-authored world lore. PLACEHOLDER summary.',
-    tags: ['Luau', 'Rojo', 'Knit', 'Roact'],
+      'An open-world Roblox factory game. Gather resources, build machines, and automate your way to something bigger. Currently in pre-alpha.',
+    tags: ['Luau', 'Rojo', 'Fusion'],
     accent: 'blue',
-    href: '#'
-  },
-  {
-    title: 'PLACEHOLDER: Void Runner',
-    description:
-      'Fast-paced movement shooter built on a custom movement controller. PLACEHOLDER — describe the core loop and standout mechanic.',
-    tags: ['Luau', 'Matter ECS', 'Rojo'],
-    accent: 'purple',
-    href: '#'
-  },
-  {
-    title: 'PLACEHOLDER: Stellar Forge',
-    description:
-      'Procedural world-building sandbox. Chunked streaming and custom terrain authoring tools. PLACEHOLDER copy.',
-    tags: ['Luau', 'TypeScript', 'Tools'],
-    accent: 'gold',
-    href: '#'
-  },
-  {
-    title: 'PLACEHOLDER: Aurora Tactics',
-    description:
-      'Turn-based grid tactics with deep replay support and deterministic sim. PLACEHOLDER description.',
-    tags: ['Luau', 'Rojo', 'Profiler'],
-    accent: 'blue',
-    href: '#'
-  },
-  {
-    title: 'PLACEHOLDER: Celestial Heist',
-    description:
-      'Social-stealth multiplayer prototype. PLACEHOLDER — describe co-op mechanics and detection systems.',
-    tags: ['Luau', 'Networking', 'AI'],
-    accent: 'purple',
-    href: '#'
-  },
-  {
-    title: 'PLACEHOLDER: Orbital Ops',
-    description:
-      'Real-time strategy experiment running on a custom Roblox pathfinding stack. PLACEHOLDER.',
-    tags: ['Luau', 'A*', 'Rojo'],
-    accent: 'gold',
-    href: '#'
+    href: '#',
+    image: '/games/factory-beyond.png'
   }
 ]
 
@@ -59,17 +20,17 @@ const pillars = [
   {
     icon: Cpu,
     title: 'Luau Architecture',
-    body: 'Data-oriented composition, strict type coverage, and module topology that scales across hundreds of systems.'
+    body: 'Code that holds up under pressure. Strict types, clean modules, and a structure built to grow without breaking.'
   },
   {
     icon: Gamepad2,
     title: 'Feel & Mechanics',
-    body: 'Hand-tuned movement, great feedback, and simulation fidelity that rewards repeat play.'
+    body: 'Games that feel good before they look good. Every movement and interaction gets tuned until it just clicks.'
   },
   {
     icon: Map,
     title: 'World-Building',
-    body: 'Narrative-forward settings, handcrafted landmarks, and streaming pipelines that keep everything cohesive.'
+    body: 'Worlds worth getting lost in. Hand-built environments with stories baked in — places that pull you back.'
   }
 ]
 
