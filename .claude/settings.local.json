@@ -13,7 +13,12 @@
       "mcp__Roblox_Studio__search_game_tree",
       "mcp__Roblox_Studio__inspect_instance",
       "mcp__Roblox_Studio__script_grep",
-      "mcp__Roblox_Studio__screen_capture"
+      "mcp__Roblox_Studio__screen_capture",
+      "Bash(npm run *)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_snapshot"
     ]
   }
 }

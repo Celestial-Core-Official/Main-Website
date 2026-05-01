@@ -1,7 +1,56 @@
+import { useState, useEffect } from 'react'
+
 // Reusable Framer Motion variants for the Celestial Core site.
 // Import only what you need: `import { fadeUp, stagger } from '@/utils/animations'`.
 
 export const EASE_OUT = [0.22, 1, 0.36, 1]
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*<>?'
+
+export function useScramble(finalText, speed = 42, delayMs = 300) {
+  const [displayed, setDisplayed] = useState(() =>
+    finalText.split('').map(c =>
+      c === ' ' ? ' ' : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+    ).join('')
+  )
+
+  useEffect(() => {
+    let resolved = 0
+    let scrambleId
+    let noiseId
+
+    const noise = () => {
+      setDisplayed(
+        finalText.split('').map((char, i) => {
+          if (char === ' ') return ' '
+          if (i < resolved) return char
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+        }).join('')
+      )
+      noiseId = setTimeout(noise, 60)
+    }
+
+    const start = setTimeout(() => {
+      noiseId = setTimeout(noise, 0)
+      scrambleId = setInterval(() => {
+        resolved++
+        if (resolved >= finalText.length) {
+          clearTimeout(noiseId)
+          clearInterval(scrambleId)
+          setDisplayed(finalText)
+        }
+      }, speed)
+    }, delayMs)
+
+    return () => {
+      clearTimeout(start)
+      clearTimeout(noiseId)
+      clearInterval(scrambleId)
+    }
+  }, [finalText, speed, delayMs])
+
+  return displayed
+}
 export const EASE_IN = [0.4, 0, 1, 1]
 
 export const fadeUp = {

@@ -69,7 +69,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-nebula-blue/25 to-nebula-purple/25 ring-1 ring-white/15 shadow-glow-sm"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-nebula-blue/20 to-nebula-purple/20 ring-1 ring-white/12 shadow-glow-sm"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}

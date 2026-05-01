@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   Braces,
@@ -11,7 +12,23 @@ import {
   Hammer,
   Zap
 } from 'lucide-react'
-import { pageTransition, fadeUp, stagger } from '../utils/animations.js'
+import CharPopText from '../components/ui/CharPopText.jsx'
+import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
+
+const ROBLOX_USER_ID = 783467725
+
+function useRobloxAvatar(userId) {
+  const [url, setUrl] = useState(null)
+  useEffect(() => {
+    fetch(
+      `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png`
+    )
+      .then((r) => r.json())
+      .then((data) => setUrl(data?.data?.[0]?.imageUrl ?? null))
+      .catch(() => {})
+  }, [userId])
+  return url
+}
 
 const stack = [
   { name: 'Luau', icon: Braces },
@@ -42,6 +59,10 @@ const focus = [
 ]
 
 export default function About() {
+  const avatarUrl = useRobloxAvatar(ROBLOX_USER_ID)
+  const s1 = useScramble('A small studio. ', 42, 300)
+  const s2 = useScramble('Serious craft.', 42, 700)
+
   return (
     <motion.div {...pageTransition}>
       <section className="relative mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
@@ -57,55 +78,47 @@ export default function About() {
               variants={fadeUp}
               className="mt-3 font-display font-bold leading-[1.05] tracking-tight text-balance text-[clamp(2.2rem,6vw,4.5rem)]"
             >
-              A small studio.{' '}
-              <span className="text-gradient">Serious craft.</span>
+              {s1}<span className="text-gradient">{s2}</span>
             </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-2xl text-white/70 md:text-lg"
-            >
-              Celestial Core is a one-person Roblox studio run by RealDzolat.
-              The goal is simple: build games that are actually worth playing,
-              backed by code that won't fall apart when things get interesting.
-              Every title starts with a solid Luau foundation — strict types,
-              clean systems, and a UI layer built on Fusion.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="mt-4 max-w-2xl text-white/60 md:text-base"
-            >
-              Right now that means Factory Beyond — an open-world factory game
-              in pre-alpha. There's a lot left to build, and that's the fun part.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 grid gap-4 sm:grid-cols-2"
-            >
-              <div className="glass glow-border rounded-2xl p-5">
-                <h3 className="font-display text-lg font-semibold">How we build</h3>
-                <p className="mt-2 text-sm text-white/65">
-                  Small, focused systems. Fusion for reactive UI. Rojo for a
-                  real dev workflow. Nothing gets shipped until it feels right.
-                </p>
-              </div>
-              <div className="glass glow-border rounded-2xl p-5">
-                <h3 className="font-display text-lg font-semibold">What we care about</h3>
-                <p className="mt-2 text-sm text-white/65">
-                  Games that respect the player's time. Code that a future
-                  version of us won't hate. Quality over output.
-                </p>
-              </div>
-            </motion.div>
+            <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
+              <CharPopText
+                text="Celestial Core is a one-person Roblox studio run by RealDzolat. The goal is simple: build games that are actually worth playing, backed by code that won't fall apart when things get interesting. Every title starts with a solid Luau foundation — strict types, clean systems, and a UI layer built on Fusion."
+                delayStart={0.5}
+              />
+            </p>
+            <p className="mt-4 max-w-2xl text-white/60 md:text-base">
+              <CharPopText
+                text="Right now that means Factory Beyond — an open-world factory game in pre-alpha. There's a lot left to build, and that's the fun part."
+                delayStart={0.5}
+              />
+            </p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative"
+            className="relative flex flex-col gap-5"
           >
-            <div className="glass glow-border relative rounded-3xl p-6">
+            <div className="glass glow-border flex items-center gap-4 rounded-2xl p-5">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-nebula-blue/30 to-nebula-purple/30 ring-1 ring-white/10">
+                  <img src={'/realdzolat.png'} alt="RealDzolat" className="h-full w-full object-cover" />
+              </div>
+              <div>
+                <p className="font-display text-base font-semibold">RealDzolat</p>
+                <p className="mt-0.5 text-sm text-white/55">Founder · Celestial Core</p>
+                <a
+                  href="https://www.roblox.com/users/783467725/profile"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-1 inline-block font-mono text-[11px] uppercase tracking-wider text-nebula-blue hover:text-white transition-colors"
+                >
+                  Roblox profile →
+                </a>
+              </div>
+            </div>
+
+            <div className="glass glow-border relative rounded-3xl p-6 transition-colors">
               <h2 className="font-display text-sm uppercase tracking-[0.2em] text-white/60">
                 Tech stack
               </h2>
@@ -124,7 +137,7 @@ export default function About() {
                     className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-2 py-4 text-center transition hover:border-white/25 hover:bg-white/[0.06] hover:shadow-glow-sm"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue/25 to-nebula-purple/25 ring-1 ring-white/10">
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-5 w-5 text-nebula-blue" />
                     </span>
                     <span className="font-mono text-[11px] uppercase tracking-wider text-white/75 group-hover:text-white">
                       {name}
@@ -158,10 +171,10 @@ export default function About() {
             <motion.div
               key={title}
               variants={fadeUp}
-              className="glass glow-border rounded-2xl p-6"
+              className="glass card-border rounded-2xl p-6"
             >
               <div className="flex items-start justify-between gap-4">
-                <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-nebula-blue/30 to-nebula-purple/30 ring-1 ring-white/10">
+                <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-nebula-blue/20 to-nebula-purple/20 ring-1 ring-white/8">
                   <Icon className="h-5 w-5" />
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-nebula-gold">
@@ -172,7 +185,7 @@ export default function About() {
                 {label}
               </p>
               <h3 className="mt-1 font-display text-xl font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-white/65">{body}</p>
+              <p className="mt-2 text-sm text-white/65"><CharPopText text={body} /></p>
             </motion.div>
           ))}
         </motion.div>

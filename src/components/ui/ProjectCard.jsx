@@ -2,11 +2,19 @@ import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import TechBadge from './TechBadge.jsx'
+import CharPopText from './CharPopText.jsx'
 
 const ACCENTS = {
   blue: 'from-nebula-blue/50 to-nebula-purple/0',
   purple: 'from-nebula-purple/50 to-nebula-blue/0',
   gold: 'from-nebula-gold/50 to-nebula-purple/0'
+}
+
+const STATUS_STYLES = {
+  'Pre-Alpha':      'border-nebula-gold/40 bg-nebula-gold/10 text-nebula-gold',
+  'In Development': 'border-nebula-blue/40 bg-nebula-blue/10 text-nebula-blue',
+  'Beta':           'border-nebula-purple/40 bg-nebula-purple/10 text-white',
+  'Released':       'border-green-500/40 bg-green-500/10 text-green-400',
 }
 
 export default function ProjectCard({
@@ -15,7 +23,8 @@ export default function ProjectCard({
   tags = ['PLACEHOLDER'],
   href = '#',
   image,
-  accent = 'blue'
+  accent = 'blue',
+  status,
 }) {
   const ref = useRef(null)
 
@@ -66,7 +75,7 @@ export default function ProjectCard({
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      className="group relative block overflow-hidden rounded-2xl glass glow-border p-5 will-change-transform"
+      className="group relative block overflow-hidden rounded-2xl glass card-border p-5 will-change-transform transition-colors"
     >
       <motion.span
         aria-hidden="true"
@@ -86,6 +95,11 @@ export default function ProjectCard({
           className={`absolute inset-0 bg-gradient-to-tr ${accentClass} mix-blend-screen opacity-60`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-void/10 to-transparent" />
+        {status && (
+          <span className={`absolute top-2.5 right-2.5 rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest backdrop-blur-sm ${STATUS_STYLES[status] ?? 'border-white/20 bg-white/10 text-white/70'}`}>
+            {status}
+          </span>
+        )}
       </div>
 
       <div className="relative mt-5 flex items-start justify-between gap-4">
@@ -96,7 +110,7 @@ export default function ProjectCard({
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>
       </div>
-      <p className="relative mt-2 text-sm text-white/65">{description}</p>
+      <p className="relative mt-2 text-sm text-white/65"><CharPopText text={description} /></p>
 
       {tags?.length > 0 && (
         <div className="relative mt-4 flex flex-wrap gap-1.5">

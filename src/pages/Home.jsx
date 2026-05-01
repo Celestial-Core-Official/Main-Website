@@ -1,28 +1,40 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Gamepad2, Code2, Cpu, Sparkles } from 'lucide-react'
-import Button from '../components/ui/Button.jsx'
-import ProjectCard from '../components/ui/ProjectCard.jsx'
-import TechBadge from '../components/ui/TechBadge.jsx'
 import {
-  pageTransition,
-  fadeUp,
-  stagger,
-  letterFadeUp
-} from '../utils/animations.js'
+  ArrowRight, Gamepad2, Code2, Cpu, Sparkles,
+  Radio, User
+} from 'lucide-react'
+import Button from '../components/ui/Button.jsx'
+import TechBadge from '../components/ui/TechBadge.jsx'
+import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
 
-const HERO_TITLE = 'Celestial Core'
+function useTypewriter(phrases, typeSpeed = 55, deleteSpeed = 30, pauseMs = 2400) {
+  const [phraseIdx, setPhraseIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [deleting, setDeleting] = useState(false)
 
-const highlights = [
-  {
-    title: 'Factory Beyond',
-    description:
-      'An open-world Roblox factory game. Gather resources, build machines, and automate your way to something bigger. Currently in pre-alpha.',
-    tags: ['Luau', 'Rojo', 'Fusion'],
-    href: '/games',
-    accent: 'blue',
-    image: '/games/factory-beyond.png'
-  }
-]
+  useEffect(() => {
+    const phrase = phrases[phraseIdx]
+    if (!deleting && charIdx < phrase.length) {
+      const t = setTimeout(() => setCharIdx(c => c + 1), typeSpeed)
+      return () => clearTimeout(t)
+    }
+    if (!deleting && charIdx === phrase.length) {
+      const t = setTimeout(() => setDeleting(true), pauseMs)
+      return () => clearTimeout(t)
+    }
+    if (deleting && charIdx > 0) {
+      const t = setTimeout(() => setCharIdx(c => c - 1), deleteSpeed)
+      return () => clearTimeout(t)
+    }
+    if (deleting && charIdx === 0) {
+      setDeleting(false)
+      setPhraseIdx(i => (i + 1) % phrases.length)
+    }
+  }, [charIdx, deleting, phraseIdx, phrases, typeSpeed, deleteSpeed, pauseMs])
+
+  return phrases[phraseIdx].slice(0, charIdx)
+}
 
 const pillars = [
   {
@@ -42,171 +54,221 @@ const pillars = [
   }
 ]
 
+const techStack = ['Luau', 'TypeScript', 'C++', 'C#', 'Python']
+
+const marqueeItems = ['Celestial', 'Core']
+
+const QUOTES = [
+  'Build systems that outlive the sprint.',
+  'Simulation quality is product quality.',
+  'Every mechanic earns its place.',
+  'Ship slow. Ship right.',
+]
+
+const buildStages = ['Scaffolding', 'Core Systems', 'Resource Loop', 'World Layer']
+
 export default function Home() {
+  const quote = useTypewriter(QUOTES)
+  const scrambleCelestial = useScramble('Celestial', 42, 300)
+  const scrambleCore = useScramble('Core.', 42, 700)
+
   return (
     <motion.div {...pageTransition}>
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 mesh-bg opacity-80 animate-aurora"
-        />
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute left-1/2 top-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-nebula-blue/20 blur-[120px]" />
-          <div className="absolute -right-20 top-40 h-[360px] w-[360px] rounded-full bg-nebula-purple/25 blur-[120px]" />
-          <div className="absolute bottom-0 left-0 h-[280px] w-[280px] rounded-full bg-nebula-gold/10 blur-[120px]" />
-        </div>
 
-        <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute block h-[2px] w-[2px] rounded-full bg-white/60 animate-glow-pulse"
-              style={{
-                left: `${(i * 53) % 100}%`,
-                top: `${(i * 37) % 100}%`,
-                animationDelay: `${(i % 7) * 0.4}s`,
-                opacity: 0.35 + ((i * 13) % 50) / 100
-              }}
-            />
-          ))}
-        </div>
+      {/* ── Hero ──────────────────────────────────────────────── */}
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 mesh-bg opacity-40 pointer-events-none" />
+        <div aria-hidden="true" className="absolute inset-0 grid-overlay pointer-events-none" />
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-5 pb-24 pt-20 text-center md:px-8 md:pt-28 lg:pt-36">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={stagger(0.12)}
-            className="flex flex-col items-center"
-          >
-            <motion.span
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/70"
+        <div className="relative mx-auto w-full max-w-7xl px-5 py-20 md:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_400px] lg:gap-16">
+
+            {/* Left: Identity */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger(0.1)}
+              className="flex flex-col items-start"
             >
-              <Sparkles className="h-3.5 w-3.5 text-nebula-gold" />
-              Systems & Game Engineering
-            </motion.span>
+              <motion.span
+                variants={fadeUp}
+                className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/60"
+              >
+                <Sparkles className="h-3 w-3 text-nebula-gold" />
+                Systems &amp; Game Engineering
+              </motion.span>
 
-            <motion.h1
-              variants={fadeUp}
-              className="mt-6 font-display font-bold leading-[1.05] tracking-tight text-balance text-[clamp(2.5rem,7vw,6rem)]"
-            >
-              <span className="block">
-                {HERO_TITLE.split('').map((ch, i) => (
-                  <motion.span
-                    key={`${ch}-${i}`}
-                    custom={i}
-                    variants={letterFadeUp}
-                    className={`inline-block ${ch === ' ' ? 'w-[0.3em]' : ''}`}
-                  >
-                    <span className="text-gradient drop-shadow-[0_0_30px_rgba(96,165,250,0.35)]">
-                      {ch === ' ' ? '\u00A0' : ch}
-                    </span>
-                  </motion.span>
+              <motion.h1
+                variants={fadeUp}
+                className="mt-6 font-display font-extrabold leading-[1.0] tracking-tight text-[clamp(3rem,7.5vw,7rem)]"
+              >
+                <span className="text-gradient">{scrambleCelestial}</span>
+                <br />
+                <span className="text-white">{scrambleCore}</span>
+              </motion.h1>
+
+              <motion.p variants={fadeUp} className="mt-6 max-w-lg text-[1.05rem] leading-relaxed text-white/60 md:text-lg">
+                I'm{' '}
+                <span className="font-semibold text-white">RealDzolat</span>
+                {' '}— a systems &amp; game programmer shipping ambitious
+                Roblox titles and deep low-level software.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <Button to="/games" variant="primary" icon={ArrowRight}>
+                  Explore my Work
+                </Button>
+                <Button to="/contact" variant="outline">
+                  Start a Project
+                </Button>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-2">
+                {techStack.map((t) => (
+                  <TechBadge key={t} label={t} />
                 ))}
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-2xl text-balance text-base text-white/70 md:text-lg"
-            >
-              I'm <span className="font-semibold text-white">RealDzolat</span> — a
-              hardcore systems &amp; game programmer shipping ambitious Roblox
-              titles and deep low-level software. Welcome to the void.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
-            >
-              <Button to="/projects" variant="primary" icon={ArrowRight}>
-                Explore Projects
-              </Button>
-              <Button to="/contact" variant="outline">
-                Start a Project
-              </Button>
+              </motion.div>
             </motion.div>
 
+            {/* Right: Live Status Panel */}
             <motion.div
-              variants={fadeUp}
-              className="mt-10 flex flex-wrap items-center justify-center gap-2"
+              initial={{ opacity: 0, x: 32 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:block"
             >
-              {['Luau', 'TypeScript', 'C++', 'C#', 'Python'].map((t) => (
-                <TechBadge key={t} label={t} />
-              ))}
+              <div className="glass glow-border rounded-3xl p-6 space-y-6">
+
+                <div>
+                  <div className="mb-4 flex items-center gap-2">
+                    <Radio className="h-3.5 w-3.5 text-nebula-blue" />
+                    <p className="font-mono text-xs uppercase tracking-[0.25em] text-nebula-blue-glow">
+                      / Currently Building
+                    </p>
+                  </div>
+                  <div className="mb-5 flex items-start gap-3">
+                    <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)] animate-pulse" />
+                    <div>
+                      <p className="font-display text-lg font-semibold text-white">Factory Beyond</p>
+                      <p className="mt-0.5 text-xs text-white/50">Resource loop · Machine systems · World gen</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    {buildStages.map((stage, i) => (
+                      <div key={stage} className="flex items-center gap-3">
+                        <div className={`h-1 flex-1 rounded-full ${i < 3 ? 'bg-nebula-blue/50' : 'bg-white/[0.08]'}`} />
+                        <span className={`w-28 text-right font-mono text-[10px] uppercase tracking-wider ${i < 3 ? 'text-white/55' : 'text-white/20'}`}>
+                          {stage}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="h-px bg-white/[0.06]" />
+
+                <div>
+                  <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-nebula-purple-glow">
+                    / Philosophy
+                  </p>
+                  <p className="min-h-[3rem] font-display text-base font-semibold leading-snug text-white/80">
+                    &ldquo;{quote}
+                    <span className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 bg-nebula-purple align-middle animate-pulse" />
+                    &rdquo;
+                  </p>
+                </div>
+
+              </div>
             </motion.div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-5 py-20 md:px-8">
-        <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-nebula-blue-glow">
-              / Featured
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
-              Highlight reel from the studio
-            </h2>
-            <p className="mt-3 max-w-2xl text-white/60">
-              A curated slice across game development, systems engineering, and
-              tooling. Hover to inspect; tap to dive deeper on their dedicated
-              pages.
-            </p>
-          </div>
-          <Button to="/projects" variant="ghost" icon={ArrowRight}>
-            View all
-          </Button>
-        </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={stagger(0.12)}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {highlights.map((p) => (
-            <motion.div key={p.title} variants={fadeUp}>
-              <ProjectCard {...p} />
-            </motion.div>
+      {/* ── Marquee ───────────────────────────────────────────── */}
+      <div className="relative overflow-hidden border-y border-white/5 py-4">
+        <div className="marquee-track flex items-center">
+          {Array.from({ length: 60 }, (_, i) => marqueeItems[i % marqueeItems.length]).map((item, i) => (
+            <span
+              key={i}
+              className="mx-8 flex-shrink-0 whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-white/30"
+            >
+              {item}
+              <span className="ml-8 text-nebula-blue/30">·</span>
+            </span>
           ))}
+        </div>
+      </div>
+
+      {/* ── Featured Game Spotlight ───────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-nebula-blue-glow"
+        >
+          / Featured Title
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+          className="glass glow-border relative overflow-hidden rounded-3xl"
+        >
+          <div aria-hidden="true" className="absolute inset-0 mesh-bg opacity-30" />
+          <div className="relative grid lg:grid-cols-[1fr_auto]">
+            <div className="p-8 md:p-12">
+              <div className="mb-6 flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-nebula-gold/10 px-3 py-1 font-mono text-xs uppercase tracking-widest text-nebula-gold ring-1 ring-nebula-gold/30">
+                  <span className="h-1.5 w-1.5 rounded-full bg-nebula-gold animate-pulse" />
+                  Pre-Alpha
+                </span>
+                <span className="font-mono text-xs text-white/40">Roblox · Luau</span>
+              </div>
+              <h2 className="mb-4 font-display text-4xl font-bold text-white md:text-5xl">
+                Factory Beyond
+              </h2>
+              <p className="mb-8 max-w-lg text-lg leading-relaxed text-white/60">
+                An open-world Roblox factory game. Gather resources, build machines, and automate your way to something bigger.
+              </p>
+              <div className="mb-8 flex flex-wrap gap-2">
+                {['Luau', 'Rojo', 'Fusion'].map(t => <TechBadge key={t} label={t} />)}
+              </div>
+              <Button to="/games" variant="primary" icon={ArrowRight}>
+                View on Games
+              </Button>
+            </div>
+            <div className="hidden items-center justify-center border-l border-white/5 p-10 lg:flex">
+              <div className="relative">
+                <div className="flex h-36 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-nebula-blue/20 to-nebula-purple/10 ring-1 ring-white/10">
+                  <Gamepad2 className="h-16 w-16 text-nebula-blue/40" />
+                </div>
+                <div className="absolute -inset-6 -z-10 rounded-3xl bg-nebula-blue/5 blur-2xl" />
+              </div>
+            </div>
+          </div>
         </motion.div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-5 py-20 md:px-8">
-        <div className="grid gap-8 md:grid-cols-3">
-          {pillars.map(({ icon: Icon, title, body }) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.6 }}
-              className="glass glow-border rounded-2xl p-6"
-            >
-              <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-nebula-blue/30 to-nebula-purple/30 ring-1 ring-white/10">
-                <Icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-5 font-display text-xl font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-white/65">{body}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative mx-auto max-w-7xl px-5 py-20 md:px-8">
-        <div className="glass glow-border relative overflow-hidden rounded-3xl p-8 md:p-14">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 mesh-bg opacity-70"
-          />
+      {/* ── CTA ───────────────────────────────────────────────── */}
+      <section className="relative mx-auto max-w-7xl px-5 py-16 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="glass glow-border relative overflow-hidden rounded-3xl p-8 md:p-14"
+        >
+          <div aria-hidden="true" className="absolute inset-0 mesh-bg opacity-50" />
           <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
               <h3 className="font-display text-2xl font-bold md:text-4xl">
                 Have a project worth building?
               </h3>
-              <p className="mt-2 max-w-xl text-white/70">
+              <p className="mt-2 max-w-xl text-white/60">
                 From Roblox launches to systems rewrites, Celestial Core takes on
                 ambitious, long-haul engineering work.
               </p>
@@ -215,8 +277,9 @@ export default function Home() {
               Start the conversation
             </Button>
           </div>
-        </div>
+        </motion.div>
       </section>
+
     </motion.div>
   )
 }

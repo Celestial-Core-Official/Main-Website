@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import { Gamepad2, Map, Cpu, Sparkles } from 'lucide-react'
 import ProjectCard from '../components/ui/ProjectCard.jsx'
 import TechBadge from '../components/ui/TechBadge.jsx'
-import { pageTransition, fadeUp, stagger } from '../utils/animations.js'
+import CharPopText from '../components/ui/CharPopText.jsx'
+import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
 
 const games = [
   {
@@ -12,7 +13,8 @@ const games = [
     tags: ['Luau', 'Rojo', 'Fusion'],
     accent: 'blue',
     href: '#',
-    image: '/games/factory-beyond.png'
+    image: '/games/factory-beyond.png',
+    status: 'Pre-Alpha'
   }
 ]
 
@@ -30,24 +32,18 @@ const pillars = [
   {
     icon: Map,
     title: 'World-Building',
-    body: 'Worlds worth getting lost in. Hand-built environments with stories baked in — places that pull you back.'
+    body: 'Worlds worth getting lost in. Hand-built environments - places that pull you back.'
   }
 ]
 
 export default function Games() {
+  const s1 = useScramble('Games engineered', 42, 300)
+  const s2 = useScramble('for the long orbit.', 42, 700)
+
   return (
     <motion.div {...pageTransition}>
-      <section className="relative overflow-hidden border-b border-white/5">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 mesh-bg opacity-80 animate-aurora"
-        />
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute -left-10 top-24 h-[420px] w-[420px] rounded-full bg-nebula-blue/20 blur-[120px]" />
-          <div className="absolute right-0 top-10 h-[300px] w-[300px] rounded-full bg-nebula-purple/25 blur-[120px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -65,18 +61,16 @@ export default function Games() {
               variants={fadeUp}
               className="mt-6 font-display font-bold leading-[1.05] tracking-tight text-balance text-[clamp(2.2rem,6vw,4.5rem)]"
             >
-              <span className="text-gradient">Games engineered</span>
+              <span className="text-gradient">{s1}</span>
               <br />
-              for the long orbit.
+              {s2}
             </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-2xl text-white/70 md:text-lg"
-            >
-              Every title ships on a hand-forged Luau foundation — strict types,
-              composable systems, and a design discipline that treats simulation
-              quality as product quality.
-            </motion.p>
+            <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
+              <CharPopText
+                text="Every title ships on a hand-forged Luau foundation — strict types, composable systems, and a design discipline that treats simulation quality as product quality."
+                delayStart={0.5}
+              />
+            </p>
           </motion.div>
         </div>
       </section>
@@ -98,13 +92,13 @@ export default function Games() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
-              className="glass glow-border rounded-2xl p-6"
+              className="glass card-border rounded-2xl p-6 transition-colors"
             >
-              <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-nebula-blue/30 to-nebula-purple/30 ring-1 ring-white/10">
+              <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-nebula-blue/20 to-nebula-purple/20 ring-1 ring-white/8">
                 <Icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 font-display text-xl font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-white/65">{body}</p>
+              <p className="mt-2 text-sm text-white/65"><CharPopText text={body} /></p>
             </motion.div>
           ))}
         </div>
@@ -121,7 +115,7 @@ export default function Games() {
             </h2>
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {['Luau', 'Rojo', 'Roact', 'Knit', 'Matter'].map((t) => (
+            {['Luau', 'Rojo', 'Fusion'].map((t) => (
               <TechBadge key={t} label={t} />
             ))}
           </div>

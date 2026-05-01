@@ -2,14 +2,29 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Filter } from 'lucide-react'
 import ProjectCard from '../components/ui/ProjectCard.jsx'
-import { pageTransition, fadeUp, stagger } from '../utils/animations.js'
+import CharPopText from '../components/ui/CharPopText.jsx'
+import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
 
-const projects = []
+const projects = [
+  {
+    title: 'CheapKeyz Website',
+    description:
+      'The portfolio site you are looking at right now — built with React, Vite, and Framer Motion to deliver a fast, animated dark-space experience.',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion'],
+    lang: 'TypeScript',
+    href: 'https://cheap-keyz-website.vercel.app/',
+    image: '/projects/cheapkeyz.png',
+    accent: 'blue',
+  },
+]
 
 const FILTERS = ['All', 'C++', 'C#', 'TypeScript', 'Python']
 
 export default function Projects() {
   const [active, setActive] = useState('All')
+  const s1 = useScramble('Projects across ', 42, 300)
+  const s2 = useScramble('every stack', 42, 600)
+  const s3 = useScramble('that matters.', 42, 900)
 
   const filtered = useMemo(
     () =>
@@ -31,17 +46,16 @@ export default function Projects() {
             variants={fadeUp}
             className="mt-3 font-display font-bold leading-[1.05] tracking-tight text-balance text-[clamp(2.2rem,6vw,4.5rem)]"
           >
-            Projects across <span className="text-gradient">every stack</span>
+            {s1}<span className="text-gradient">{s2}</span>
             <br />
-            that matters.
+            {s3}
           </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-2xl text-white/70 md:text-lg"
-          >
-            Engines, services, tools, and research. Each card is a real
-            engineering problem reduced to its essence.
-          </motion.p>
+          <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
+            <CharPopText
+              text="Engines, services, tools, and research. Each card is a real engineering problem reduced to its essence."
+              delayStart={0.6}
+            />
+          </p>
         </motion.div>
 
         <div className="mt-10 flex flex-wrap items-center gap-2">
