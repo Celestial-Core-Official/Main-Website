@@ -7,6 +7,16 @@ import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animation
 
 const projects = [
   {
+    title: 'Celestial Website',
+    description:
+      'The portfolio site you are looking at right now — built with React, Vite, and Framer Motion to deliver a fast, animated dark-space experience.',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion'],
+    lang: 'TypeScript',
+    href: 'https://github.com/Celestial-Core-Official/Main-Website',
+    image: '/projects/celestial.png',
+    accent: 'purple',
+  },
+  {
     title: 'CheapKeyz Website',
     description:
       'The portfolio site you are looking at right now — built with React, Vite, and Framer Motion to deliver a fast, animated dark-space experience.',

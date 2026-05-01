@@ -36,36 +36,18 @@ function useTypewriter(phrases, typeSpeed = 55, deleteSpeed = 30, pauseMs = 2400
   return phrases[phraseIdx].slice(0, charIdx)
 }
 
-const pillars = [
-  {
-    icon: Gamepad2,
-    title: 'Game Architecture',
-    body: 'Luau-first composition patterns, Rojo workflows, data-oriented ECS layers, and tooling that scales to hundreds of systems.'
-  },
-  {
-    icon: Cpu,
-    title: 'Systems Engineering',
-    body: 'Low-level C++/C# internals, render pipelines, networking, and performance work where microseconds matter.'
-  },
-  {
-    icon: Code2,
-    title: 'Tooling & DX',
-    body: 'TypeScript and Python toolchains that make teams faster: codegen, CI orchestration, and first-class developer experience.'
-  }
-]
-
 const techStack = ['Luau', 'TypeScript', 'C++', 'C#', 'Python']
 
 const marqueeItems = ['Celestial', 'Core']
 
 const QUOTES = [
-  'Build systems that outlive the sprint.',
-  'Simulation quality is product quality.',
-  'Every mechanic earns its place.',
-  'Ship slow. Ship right.',
+  'Build systems that serve. Every architecture carries intention—make it count for something.',
+  'Faith in the work. Excellence isn\'t luck; it\'s discipline guided by purpose.',
+  'Discipline of code. We\'re caretakers of what we build, responsible to users and to something greater.',
+  'Create with conviction. The best work happens when craft meets calling.',
 ]
 
-const buildStages = ['Scaffolding', 'Core Systems', 'Resource Loop', 'World Layer']
+const buildStages = ['Map', 'Items', 'Core Systems', 'Official Release']
 
 export default function Home() {
   const quote = useTypewriter(QUOTES)
