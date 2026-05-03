@@ -235,32 +235,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────── */}
-      <section className="relative mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-          className="glass glow-border relative overflow-hidden rounded-3xl p-8 md:p-14"
-        >
-          <div aria-hidden="true" className="absolute inset-0 mesh-bg opacity-50" />
-          <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div>
-              <h3 className="font-display text-2xl font-bold md:text-4xl">
-                Have a project worth building?
-              </h3>
-              <p className="mt-2 max-w-xl text-white/60">
-                From Roblox launches to systems rewrites, Celestial Core takes on
-                ambitious, long-haul engineering work.
-              </p>
-            </div>
-            <Button to="/contact" variant="primary" size="lg" icon={ArrowRight}>
-              Start the conversation
-            </Button>
-          </div>
-        </motion.div>
-      </section>
 
     </motion.div>
   )

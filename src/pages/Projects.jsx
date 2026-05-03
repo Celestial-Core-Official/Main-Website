@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Celestial Website',
     description:
-      'The portfolio site you are looking at right now — built with React, Vite, and Framer Motion to deliver a fast, animated dark-space experience.',
+      'High-performance portfolio site built with React, Vite, and Framer Motion. Features dark-space aesthetic with glassmorphic design, scramble text animations, and smooth page transitions.',
     tags: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion'],
     lang: 'TypeScript',
     href: 'https://github.com/Celestial-Core-Official/Main-Website',
@@ -19,7 +19,7 @@ const projects = [
   {
     title: 'CheapKeyz Website',
     description:
-      'The portfolio site you are looking at right now — built with React, Vite, and Framer Motion to deliver a fast, animated dark-space experience.',
+      'E-commerce storefront for game key marketplace. Built with React and modern tooling, optimized for conversion with clean UX and responsive design across all devices.',
     tags: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion'],
     lang: 'TypeScript',
     href: 'https://cheap-keyz-website.vercel.app/',

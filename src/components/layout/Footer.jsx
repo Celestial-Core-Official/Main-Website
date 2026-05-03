@@ -14,69 +14,59 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-24 border-t border-white/5 bg-void/60">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
-        <div>
-          <img src="/logo.png" alt="CelestialCore" className="h-8 w-auto object-contain" />
-          <p className="mt-3 max-w-xs text-sm text-white/60">
-            Systems-grade game and software engineering. Built by RealDzolat,
-            headquartered in deep orbit.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white/50">
-            Navigate
-          </h4>
-          <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-            {footerLinks.map((l) => (
-              <li key={l.to}>
+      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8">
+        <div className="grid gap-10 md:grid-cols-[1fr_auto]">
+          <div>
+            <img src="/logo.png" alt="CelestialCore" className="h-8 w-auto object-contain" />
+            <p className="mt-3 max-w-xs text-sm text-white/60">
+              Systems-grade game and software engineering. Built by RealDzolat,
+              headquartered in deep orbit.
+            </p>
+            <nav className="mt-6 flex flex-wrap gap-4 text-sm">
+              {footerLinks.map((l) => (
                 <Link
+                  key={l.to}
                   to={l.to}
                   className="text-white/70 transition-colors hover:text-white"
                 >
                   {l.label}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+              ))}
+            </nav>
+          </div>
 
-        <div>
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white/50">
-            Connect
-          </h4>
-          <ul className="mt-4 flex flex-col gap-2 text-sm">
-            <li>
+          <div className="flex flex-col items-start gap-6 md:items-end">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white/50">
+              Connect
+            </h4>
+            <div className="flex gap-4">
               <a
                 href="https://github.com/Dzolat"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
+                title="GitHub"
+                className="p-2 text-white/70 transition-colors hover:text-white"
               >
-                <Github className="h-4 w-4" /> github.com/Dzolat
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
+                <Github className="h-5 w-5" />
               </a>
-            </li>
-            <li>
               <a
                 href="mailto:admin@celestialcore.cc"
-                className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
+                title="Email"
+                className="p-2 text-white/70 transition-colors hover:text-white"
               >
-                <Mail className="h-4 w-4" /> admin@celestialcore.cc
+                <Mail className="h-5 w-5" />
               </a>
-            </li>
-            <li>
               <a
                 href="https://discord.gg/UkkJ2UKZ6W"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
+                title="Discord"
+                className="p-2 text-white/70 transition-colors hover:text-white"
               >
-                <MessageSquare className="h-4 w-4" /> Discord
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
+                <MessageSquare className="h-5 w-5" />
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
 
