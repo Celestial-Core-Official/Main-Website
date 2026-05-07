@@ -17,13 +17,13 @@ const projects = [
     accent: 'purple',
   },
   {
-    title: 'CheapKeyz Website',
+    title: 'cckeys Website',
     description:
       'E-commerce storefront for game key marketplace. Built with React and modern tooling, optimized for conversion with clean UX and responsive design across all devices.',
     tags: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion'],
     lang: 'TypeScript',
-    href: 'https://cheap-keyz-website.vercel.app/',
-    image: '/projects/cheapkeyz.png',
+    href: 'https://cckeys.store/',
+    image: '/projects/cckeys.png',
     accent: 'blue',
   },
 ]
