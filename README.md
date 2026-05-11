@@ -1,8 +1,10 @@
 # Celestial Core
 
-> Portfolio of **RealDzolat** — a hardcore systems and game programmer. Built as a deep-space dark-mode React SPA with glassmorphism, Framer Motion micro-interactions, and a custom cursor. Deployed on Vercel.
+> Portfolio of **RealDzolat** — a systems and game programmer. Built as a deep-space dark-mode React SPA with glassmorphism, Framer Motion micro-interactions, and a custom cursor. Deployed on Vercel.
 
-Live site: **[celestialcore.cc](https://celestialcore.cc)** (once DNS is configured in Vercel)
+Live site: **[celestialcore.cc](https://celestialcore.cc)**
+
+This project was made with **[Claude Code](https://claude.ai)**
 
 ---
 
@@ -16,16 +18,6 @@ Live site: **[celestialcore.cc](https://celestialcore.cc)** (once DNS is configu
 | Animations  | [Framer Motion 11](https://www.framer.com/motion/) |
 | Icons       | [Lucide React](https://lucide.dev)          |
 | Hosting     | [Vercel](https://vercel.com)                |
-
-### Architecture highlights
-
-- Multi-page SPA (`/`, `/games`, `/projects`, `/about`, `/contact`) with `AnimatePresence` page transitions.
-- Shared Framer Motion variants in `src/utils/animations.js` for consistent motion across pages.
-- Glassmorphism, conic glow borders, and mesh-gradient auroras baked into `src/index.css` and the Tailwind theme.
-- Reusable components: `Button`, `ProjectCard` (3D tilt), `TechBadge`, and a custom `CustomCursor` (dual-layer orb + spring-damped trailing ring).
-- Fully responsive from 320px to ultra-wide; custom cursor auto-disables on coarse pointers.
-
----
 
 ## Getting started
 
@@ -91,7 +83,7 @@ npm run preview
 
 ## Deploying to Vercel
 
-Celestial Core is built for Vercel and picks up zero-config deploys.
+This Portfolio is built for Vercel.
 
 ### 1. Push to GitHub
 
@@ -111,19 +103,6 @@ git push origin main
    - **Output Directory**: `dist`
    - **Install Command**: `npm install`
 4. Click **Deploy**.
-
-### 3. Wire up the custom domain (`celestialcore.cc`)
-
-1. In the Vercel project, open **Settings → Domains**.
-2. Add `celestialcore.cc` (and optionally `www.celestialcore.cc`).
-3. Vercel shows the exact DNS records to set — typically:
-   - **Apex (`@`)** -> `A` record pointing to `76.76.21.21`
-   - **`www`** -> `CNAME` pointing to `cname.vercel-dns.com`
-4. Update your DNS at your registrar to match. Propagation usually completes within a few minutes.
-
-### 4. SPA routing on Vercel
-
-Vite SPAs with React Router need all unknown paths to fall back to `index.html`. Vercel does this automatically for the Vite preset — no `vercel.json` required. If you switch hosts, add a rewrite rule so `/*` serves `/index.html`.
 
 ---
 
