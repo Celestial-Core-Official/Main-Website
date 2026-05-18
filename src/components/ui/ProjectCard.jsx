@@ -19,7 +19,7 @@ const STATUS_STYLES = {
 
 export default function ProjectCard({
   title = 'PLACEHOLDER Project',
-  description = 'PLACEHOLDER description — replace with a short, punchy summary of the project.',
+  description = 'PLACEHOLDER description - replace with a short, punchy summary of the project.',
   tags = ['PLACEHOLDER'],
   href = '#',
   image,

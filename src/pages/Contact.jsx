@@ -87,7 +87,7 @@ export default function Contact() {
           </motion.h1>
           <p className="mt-6 text-white/70 md:text-lg">
             <CharPopText
-              text="Whether you want to collaborate, report something, or just say hi — pick whichever channel works best for you."
+              text="Whether you want to collaborate, report something, or just say hi - pick whichever channel works best for you."
               delayStart={0.5}
             />
           </p>

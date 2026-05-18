@@ -55,7 +55,7 @@ export default function CharPopText({ text, className, delayStart = 0 }) {
               </motion.span>
             ))}
           </span>
-          {/* Plain text space — natural word-break opportunity */}
+          {/* Plain text space - natural word-break opportunity */}
           {wi < wordData.length - 1 && ' '}
         </span>
       ))}

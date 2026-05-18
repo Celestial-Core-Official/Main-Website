@@ -67,7 +67,7 @@ export default function Games() {
             </motion.h1>
             <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
               <CharPopText
-                text="Every title ships on a hand-forged Luau foundation — strict types, composable systems, and a design discipline that treats simulation quality as product quality."
+                text="Every title ships on a hand-forged Luau foundation - strict types, composable systems, and a design discipline that treats simulation quality as product quality."
                 delayStart={0.5}
               />
             </p>

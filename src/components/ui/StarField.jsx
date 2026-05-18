@@ -13,7 +13,7 @@ export default function StarField() {
         y: Math.random(),
         radius: Math.random() * 1.1 + 0.25,
         baseOpacity: Math.random() * 0.65 + 0.15,
-        // radians per millisecond — controls twinkle speed
+        // radians per millisecond - controls twinkle speed
         speed: (Math.random() * 0.0012 + 0.0004),
         phase: Math.random() * Math.PI * 2,
         // ~10% of stars get a subtle blue/purple tint

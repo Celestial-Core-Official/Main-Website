@@ -41,7 +41,7 @@ const techStack = ['Luau', 'TypeScript', 'C++', 'C#', 'Python']
 const marqueeItems = ['Celestial', 'Core']
 
 const QUOTES = [
-  'Build systems that serve. Every architecture carries intention—make it count for something.',
+  'Build systems that serve. Every architecture carries intention-make it count for something.',
   'Faith in the work. Excellence isn\'t luck; it\'s discipline guided by purpose.',
   'Discipline of code. We\'re caretakers of what we build, responsible to users and to something greater.',
   'Create with conviction. The best work happens when craft meets calling.',

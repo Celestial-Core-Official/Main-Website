@@ -82,7 +82,7 @@ export default function About() {
             </motion.h1>
             <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
               <CharPopText
-                text="Celestial Core is a systems engineering studio focused on building production-grade software. We prioritize clean architecture, strong fundamentals, and code that scales. Every project starts with clarity — whether it's performance optimization, scalable infrastructure, or polished user experiences."
+                text="Celestial Core is a systems engineering studio focused on building production-grade software. We prioritize clean architecture, strong fundamentals, and code that scales. Every project starts with clarity - whether it's performance optimization, scalable infrastructure, or polished user experiences."
                 delayStart={0.5}
               />
             </p>
