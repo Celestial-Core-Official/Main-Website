@@ -92,7 +92,7 @@ export default function Projects() {
             >
               {filtered.map((p) => (
                 <motion.div key={p.title} variants={fadeUp}>
-                  <ProjectCard {...p} />
+                  <ProjectCard {...p} featured={p.featured} />
                 </motion.div>
               ))}
             </motion.div>
