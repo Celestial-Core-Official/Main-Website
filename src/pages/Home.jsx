@@ -77,7 +77,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-white/60"
               >
                 <Sparkles className="h-3 w-3 text-nebula-gold" />
-                Systems &amp; Game Engineering
+                Systems Engineering
               </motion.span>
 
               <motion.h1
@@ -92,13 +92,12 @@ export default function Home() {
               <motion.p variants={fadeUp} className="mt-6 max-w-lg text-[1.05rem] leading-relaxed text-white/60 md:text-lg">
                 I'm{' '}
                 <span className="font-semibold text-white">RealDzolat</span>
-                {' '}— a systems &amp; game programmer shipping ambitious
-                Roblox titles and deep low-level software.
+                {' '}- a systems engineer building production-grade software.
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-                <Button to="/games" variant="primary" icon={ArrowRight}>
-                  Explore my Work
+                <Button to="/projects" variant="primary" icon={ArrowRight}>
+                  View My Projects
                 </Button>
                 <Button to="/contact" variant="outline">
                   Start a Project
@@ -182,16 +181,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── Featured Game Spotlight ───────────────────────────── */}
+      {/* ── Featured Project Spotlight ────────────────────────── */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-nebula-blue-glow"
+          className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-nebula-purple-glow"
         >
-          / Featured Title
+          / Featured Project
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -204,31 +203,31 @@ export default function Home() {
           <div className="relative grid lg:grid-cols-[1fr_auto]">
             <div className="p-8 md:p-12">
               <div className="mb-6 flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-nebula-gold/10 px-3 py-1 font-mono text-xs uppercase tracking-widest text-nebula-gold ring-1 ring-nebula-gold/30">
-                  <span className="h-1.5 w-1.5 rounded-full bg-nebula-gold animate-pulse" />
-                  Pre-Alpha
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-nebula-purple/10 px-3 py-1 font-mono text-xs uppercase tracking-widest text-nebula-purple ring-1 ring-nebula-purple/30">
+                  <span className="h-1.5 w-1.5 rounded-full bg-nebula-purple animate-pulse" />
+                  Production
                 </span>
-                <span className="font-mono text-xs text-white/40">Roblox · Luau</span>
+                <span className="font-mono text-xs text-white/40">React · TypeScript · Vite</span>
               </div>
               <h2 className="mb-4 font-display text-4xl font-bold text-white md:text-5xl">
-                Factory Beyond
+                Celestial Website
               </h2>
               <p className="mb-8 max-w-lg text-lg leading-relaxed text-white/60">
-                An open-world Roblox factory game. Gather resources, build machines, and automate your way to something bigger.
+                High-performance portfolio site with dark-space aesthetic, smooth animations, and premium glass-morphic design. Built for speed and visual polish.
               </p>
               <div className="mb-8 flex flex-wrap gap-2">
-                {['Luau', 'Rojo', 'Fusion'].map(t => <TechBadge key={t} label={t} />)}
+                {['React', 'TypeScript', 'Vite', 'Framer Motion'].map(t => <TechBadge key={t} label={t} />)}
               </div>
-              <Button to="/games" variant="primary" icon={ArrowRight}>
-                View on Games
+              <Button to="/projects" variant="primary" icon={ArrowRight}>
+                View All Projects
               </Button>
             </div>
             <div className="hidden items-center justify-center border-l border-white/5 p-10 lg:flex">
               <div className="relative">
-                <div className="flex h-36 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-nebula-blue/20 to-nebula-purple/10 ring-1 ring-white/10">
-                  <Gamepad2 className="h-16 w-16 text-nebula-blue/40" />
+                <div className="flex h-36 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-nebula-purple/20 to-nebula-gold/10 ring-1 ring-white/10">
+                  <Code2 className="h-16 w-16 text-nebula-purple/60" />
                 </div>
-                <div className="absolute -inset-6 -z-10 rounded-3xl bg-nebula-blue/5 blur-2xl" />
+                <div className="absolute -inset-6 -z-10 rounded-3xl bg-nebula-purple/5 blur-2xl" />
               </div>
             </div>
           </div>
