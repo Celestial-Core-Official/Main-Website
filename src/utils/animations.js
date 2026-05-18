@@ -7,6 +7,33 @@ export const EASE_OUT = [0.22, 1, 0.36, 1]
 
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*<>?'
 
+export function useTypewriterOnce(text, typeSpeed = 55, delayMs = 0) {
+  const [displayed, setDisplayed] = useState('')
+
+  useEffect(() => {
+    let charIdx = 0
+    let typeTimeoutId
+    let startTimeoutId
+
+    const type = () => {
+      if (charIdx < text.length) {
+        setDisplayed(text.slice(0, charIdx + 1))
+        charIdx++
+        typeTimeoutId = setTimeout(type, typeSpeed)
+      }
+    }
+
+    startTimeoutId = setTimeout(type, delayMs)
+
+    return () => {
+      clearTimeout(startTimeoutId)
+      clearTimeout(typeTimeoutId)
+    }
+  }, [text, typeSpeed, delayMs])
+
+  return displayed
+}
+
 export function useScramble(finalText, speed = 42, delayMs = 300) {
   const [displayed, setDisplayed] = useState(() =>
     finalText.split('').map(c =>

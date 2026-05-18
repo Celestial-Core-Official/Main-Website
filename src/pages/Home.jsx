@@ -47,7 +47,7 @@ const QUOTES = [
   'Create with conviction. The best work happens when craft meets calling.',
 ]
 
-const buildStages = ['Map', 'Items', 'Core Systems', 'Official Release']
+const buildStages = ['Initialization', 'Commands', 'Alpha Release', 'Official Release']
 
 export default function Home() {
   const quote = useTypewriter(QUOTES)
@@ -130,8 +130,8 @@ export default function Home() {
                   <div className="mb-5 flex items-start gap-3">
                     <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)] animate-pulse" />
                     <div>
-                      <p className="font-display text-lg font-semibold text-white">Factory Beyond</p>
-                      <p className="mt-0.5 text-xs text-white/50">Resource loop · Machine systems · World gen</p>
+                      <p className="font-display text-lg font-semibold text-white">Korex</p>
+                      <p className="mt-0.5 text-xs text-white/50">A discord utility and security bot</p>
                     </div>
                   </div>
                   <div className="space-y-2">

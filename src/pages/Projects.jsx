@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Filter } from 'lucide-react'
 import ProjectCard from '../components/ui/ProjectCard.jsx'
-import CharPopText from '../components/ui/CharPopText.jsx'
-import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
+import { pageTransition, fadeUp, stagger, useScramble, useTypewriterOnce } from '../utils/animations.js'
 import { useProjects } from '../hooks/useProjects.js'
 
 export default function Projects() {
@@ -12,6 +11,7 @@ export default function Projects() {
   const s1 = useScramble('Projects across ', 42, 300)
   const s2 = useScramble('every stack', 42, 600)
   const s3 = useScramble('that matters.', 42, 900)
+  const description = useTypewriterOnce('Engines, services, tools, and research. Each card is a real engineering problem reduced to its essence.', 45, 600)
 
   const FILTERS = useMemo(() => {
     const languages = ['All', ...new Set(projects.map((p) => p.lang))]
@@ -38,15 +38,10 @@ export default function Projects() {
             variants={fadeUp}
             className="mt-3 font-display font-bold leading-[1.05] tracking-tight text-balance text-[clamp(2.2rem,6vw,4.5rem)]"
           >
-            {s1}<span className="text-gradient">{s2}</span>
-            <br />
-            {s3}
+            {s1}<span className="text-gradient">{s2}</span> {s3}
           </motion.h1>
           <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
-            <CharPopText
-              text="Engines, services, tools, and research. Each card is a real engineering problem reduced to its essence."
-              delayStart={0.6}
-            />
+            {description}
           </p>
         </motion.div>
 
@@ -83,19 +78,14 @@ export default function Projects() {
               ))}
             </div>
 
-            <motion.div
+            <div
               key={active}
-              initial="hidden"
-              animate="visible"
-              variants={stagger(0.06)}
               className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
             >
               {filtered.map((p) => (
-                <motion.div key={p.title} variants={fadeUp}>
-                  <ProjectCard {...p} featured={p.featured} />
-                </motion.div>
+                <ProjectCard key={p.title} {...p} featured={p.featured} />
               ))}
-            </motion.div>
+            </div>
 
             {filtered.length === 0 && (
               <p className="mt-10 text-center text-white/50">

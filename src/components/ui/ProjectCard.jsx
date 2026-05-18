@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import TechBadge from './TechBadge.jsx'
-import CharPopText from './CharPopText.jsx'
+import { useScramble, useTypewriterOnce } from '../../utils/animations.js'
 
 const accentColor = {
   blue: {
@@ -31,6 +31,8 @@ export default function ProjectCard({
 }) {
   const ref = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
+  const scrambledTitle = useScramble(title, 42, 100)
+  const typewriterDesc = useTypewriterOnce(description, 35, 200)
 
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
@@ -115,24 +117,26 @@ export default function ProjectCard({
       {/* Content */}
       <div className="relative flex flex-1 flex-col p-4">
         <motion.h3
+          initial={{ fontSize: '1.25rem' }}
           animate={{ fontSize: isHovered ? '1.125rem' : '1.25rem' }}
           transition={{ duration: 0.3 }}
           className="font-display font-semibold tracking-tight text-white leading-tight mb-2 line-clamp-2"
         >
-          {title}
+          {scrambledTitle}
         </motion.h3>
 
         {/* Description - expands on hover */}
         <motion.p
+          initial={{ opacity: 0.6, height: 'clamp(0px, 1.2em, 1.2em)' }}
           animate={{
             opacity: isHovered ? 1 : 0.6,
             height: isHovered ? 'auto' : 'clamp(0px, 1.2em, 1.2em)',
-            marginBottom: isHovered ? 16 : 'auto'
+            marginBottom: isHovered ? 16 : 0
           }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
           className="text-xs text-white/60 leading-relaxed overflow-hidden"
         >
-          <CharPopText text={description} />
+          {typewriterDesc}
         </motion.p>
 
         {/* Tags - fade in on hover */}
