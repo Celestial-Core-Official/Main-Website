@@ -43,18 +43,18 @@ const stack = [
 
 const focus = [
   {
-    icon: Gamepad2,
-    label: 'In development',
-    title: 'Factory Beyond',
-    body: "Our first title — a Roblox factory game set in an open world. Pre-alpha. We're building the core loop: gather, craft, automate, expand.",
-    badge: 'Pre-Alpha'
+    icon: Code2,
+    label: 'Web projects',
+    title: 'Production Software',
+    body: 'Building robust web applications with React and TypeScript. We focus on clean code, performance optimization, and scalable architecture that handles growth.',
+    badge: 'Active'
   },
   {
-    icon: Hammer,
-    label: 'Internal tooling',
-    title: 'Studio pipeline',
-    body: 'Rojo-based workflow, shared Luau libraries, and Fusion-driven UI patterns we reuse across every project we ship.',
-    badge: 'Ongoing'
+    icon: Code2,
+    label: 'System design',
+    title: 'Architecture first',
+    body: 'Every project starts with strong fundamentals. Scalable infrastructure, clear data flows, and systems designed to evolve without technical debt.',
+    badge: 'Core'
   }
 ]
 
@@ -82,13 +82,13 @@ export default function About() {
             </motion.h1>
             <p className="mt-6 max-w-2xl text-white/70 md:text-lg">
               <CharPopText
-                text="Celestial Core is a one-person Roblox studio run by RealDzolat. The goal is simple: build games that are actually worth playing, backed by code that won't fall apart when things get interesting. Every title starts with a solid Luau foundation — strict types, clean systems, and a UI layer built on Fusion."
+                text="Celestial Core is a systems engineering studio focused on building production-grade software. We prioritize clean architecture, strong fundamentals, and code that scales. Every project starts with clarity — whether it's performance optimization, scalable infrastructure, or polished user experiences."
                 delayStart={0.5}
               />
             </p>
             <p className="mt-4 max-w-2xl text-white/60 md:text-base">
               <CharPopText
-                text="Right now that means Factory Beyond — an open-world factory game in pre-alpha. There's a lot left to build, and that's the fun part."
+                text="We work across the full stack: web applications, backend systems, and everything in between. The mission is simple: ship excellent work."
                 delayStart={0.5}
               />
             </p>
