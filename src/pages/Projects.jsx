@@ -88,7 +88,7 @@ export default function Projects() {
               initial="hidden"
               animate="visible"
               variants={stagger(0.06)}
-              className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
             >
               {filtered.map((p) => (
                 <motion.div key={p.title} variants={fadeUp}>

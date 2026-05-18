@@ -36,7 +36,7 @@ function useTypewriter(phrases, typeSpeed = 55, deleteSpeed = 30, pauseMs = 2400
   return phrases[phraseIdx].slice(0, charIdx)
 }
 
-const techStack = ['Luau', 'TypeScript', 'C++', 'C#', 'Python']
+const techStack = ['Luau', 'TypeScript', 'C++', 'C#', 'Rust']
 
 const marqueeItems = ['Celestial', 'Core']
 
@@ -100,7 +100,7 @@ export default function Home() {
                   View My Projects
                 </Button>
                 <Button to="/contact" variant="outline">
-                  Start a Project
+                  Contact Us
                 </Button>
               </motion.div>
 

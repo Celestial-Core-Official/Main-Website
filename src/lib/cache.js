@@ -1,5 +1,5 @@
 /**
- * localStorage caching utilities with 1-hour expiry
+ * sessionStorage caching utilities with 1-hour expiry
  */
 
 const CACHE_EXPIRY_MS = 60 * 60 * 1000; // 1 hour in milliseconds
@@ -13,7 +13,7 @@ const CACHE_PREFIX = 'cc_cache_';
 export function getCachedData(key) {
   try {
     const prefixedKey = `${CACHE_PREFIX}${key}`;
-    const cached = localStorage.getItem(prefixedKey);
+    const cached = sessionStorage.getItem(prefixedKey);
 
     if (!cached) {
       return null;
@@ -47,7 +47,7 @@ export function setCachedData(key, data) {
       data,
       timestamp: Date.now(),
     };
-    localStorage.setItem(prefixedKey, JSON.stringify(cacheEntry));
+    sessionStorage.setItem(prefixedKey, JSON.stringify(cacheEntry));
   } catch (error) {
     console.warn(`Error setting cached data for key "${key}":`, error);
   }
@@ -60,7 +60,7 @@ export function setCachedData(key, data) {
 export function clearCache(key) {
   try {
     const prefixedKey = `${CACHE_PREFIX}${key}`;
-    localStorage.removeItem(prefixedKey);
+    sessionStorage.removeItem(prefixedKey);
   } catch (error) {
     console.warn(`Error clearing cache for key "${key}":`, error);
   }
@@ -74,8 +74,8 @@ export function clearAllCache() {
     const keysToRemove = [];
 
     // Collect all cache keys
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
       if (key && key.startsWith(CACHE_PREFIX)) {
         keysToRemove.push(key);
       }
@@ -83,7 +83,7 @@ export function clearAllCache() {
 
     // Remove all collected keys
     keysToRemove.forEach((key) => {
-      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
     });
   } catch (error) {
     console.warn('Error clearing all cache:', error);

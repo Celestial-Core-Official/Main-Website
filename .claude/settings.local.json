@@ -29,7 +29,14 @@
       "Skill(superpowers:subagent-driven-development:*)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(*)"
+      "Bash(*)",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_press_key",
+      "Skill(frontend-design:frontend-design)",
+      "Skill(frontend-design:frontend-design:*)",
+      "mcp__plugin_playwright_playwright__browser_hover",
+      "Skill(superpowers:brainstorming)",
+      "Skill(superpowers:brainstorming:*)"
     ]
   }
 }
