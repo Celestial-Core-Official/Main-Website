@@ -10,7 +10,8 @@ import {
   Workflow,
   Layers,
   Hammer,
-  Zap
+  Zap,
+  Database
 } from 'lucide-react'
 import CharPopText from '../components/ui/CharPopText.jsx'
 import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
@@ -30,15 +31,40 @@ function useRobloxAvatar(userId) {
   return url
 }
 
-const stack = [
-  { name: 'Luau', icon: Braces },
-  { name: 'Fusion', icon: Zap },
-  { name: 'Rojo', icon: Workflow },
-  { name: 'TypeScript', icon: Code2 },
-  { name: 'C++', icon: Cpu },
-  { name: 'C#', icon: Layers },
-  { name: 'Python', icon: Terminal },
-  { name: 'Vite', icon: Rocket },
+const techStack = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'React', icon: Zap },
+      { name: 'TypeScript', icon: Code2 },
+      { name: 'Vite', icon: Rocket },
+      { name: 'Tailwind', icon: Layers }
+    ]
+  },
+  {
+    category: 'Tools & Build',
+    items: [
+      { name: 'Framer Motion', icon: Workflow },
+      { name: 'PostCSS', icon: Hammer },
+      { name: 'ESLint', icon: Code2 }
+    ]
+  },
+  {
+    category: 'Backend & Systems',
+    items: [
+      { name: 'Node.js', icon: Terminal },
+      { name: 'TypeScript', icon: Code2 },
+      { name: 'Supabase', icon: Database }
+    ]
+  },
+  {
+    category: 'Low-Level',
+    items: [
+      { name: 'C++', icon: Cpu },
+      { name: 'C#', icon: Layers },
+      { name: 'Rust', icon: Zap }
+    ]
+  }
 ]
 
 const focus = [
@@ -119,29 +145,38 @@ export default function About() {
             </div>
 
             <div className="glass glow-border relative rounded-3xl p-6 transition-colors">
-              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-white/60">
-                Tech stack
+              <h2 className="font-display text-base font-semibold mb-8">
+                Tech Stack
               </h2>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
-                variants={stagger(0.05)}
-                className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4"
+                variants={stagger(0.08)}
+                className="space-y-8"
               >
-                {stack.map(({ name, icon: Icon }) => (
-                  <motion.div
-                    key={name}
-                    variants={fadeUp}
-                    whileHover={{ y: -3, scale: 1.03 }}
-                    className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-2 py-4 text-center transition hover:border-white/25 hover:bg-white/[0.06] hover:shadow-glow-sm"
-                  >
-                    <span className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue/25 to-nebula-purple/25 ring-1 ring-white/10">
-                      <Icon className="h-5 w-5 text-nebula-blue" />
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-white/75 group-hover:text-white">
-                      {name}
-                    </span>
+                {techStack.map(({ category, items }) => (
+                  <motion.div key={category} variants={fadeUp}>
+                    <h3 className="font-mono text-xs text-nebula-blue tracking-wider uppercase mb-4">
+                      {category}
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {items.map(({ name, icon: Icon }) => (
+                        <motion.div
+                          key={name}
+                          variants={fadeUp}
+                          whileHover={{ y: -3, scale: 1.05 }}
+                          className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-2 py-4 text-center transition hover:border-nebula-blue/40 hover:bg-white/[0.06] hover:shadow-glow-sm"
+                        >
+                          <span className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue/25 to-nebula-purple/25 ring-1 ring-white/10 group-hover:from-nebula-blue/40 group-hover:to-nebula-purple/40 transition-colors">
+                            <Icon className="h-5 w-5 text-nebula-blue group-hover:text-nebula-gold transition-colors" />
+                          </span>
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-white/75 group-hover:text-white transition-colors">
+                            {name}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>
