@@ -1,70 +1,32 @@
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Code2, Zap, Workflow } from 'lucide-react'
 import {
-  Braces,
-  Code2,
-  Cpu,
-  Gamepad2,
-  Rocket,
-  Terminal,
-  Workflow,
-  Layers,
-  Hammer,
-  Zap,
-  Database
-} from 'lucide-react'
+  SiReact,
+  SiTypescript,
+  SiVite,
+  SiPostcss,
+  SiEslint,
+  SiNodedotjs,
+  SiSupabase,
+  SiCplusplus,
+  SiDotnet,
+  SiRust
+} from 'react-icons/si'
 import CharPopText from '../components/ui/CharPopText.jsx'
 import { pageTransition, fadeUp, stagger, useScramble } from '../utils/animations.js'
 
-const ROBLOX_USER_ID = 783467725
-
-function useRobloxAvatar(userId) {
-  const [url, setUrl] = useState(null)
-  useEffect(() => {
-    fetch(
-      `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png`
-    )
-      .then((r) => r.json())
-      .then((data) => setUrl(data?.data?.[0]?.imageUrl ?? null))
-      .catch(() => {})
-  }, [userId])
-  return url
-}
-
 const techStack = [
-  {
-    category: 'Frontend',
-    items: [
-      { name: 'React', icon: Zap },
-      { name: 'TypeScript', icon: Code2 },
-      { name: 'Vite', icon: Rocket },
-      { name: 'Tailwind', icon: Layers }
-    ]
-  },
-  {
-    category: 'Tools & Build',
-    items: [
-      { name: 'Framer Motion', icon: Workflow },
-      { name: 'PostCSS', icon: Hammer },
-      { name: 'ESLint', icon: Code2 }
-    ]
-  },
-  {
-    category: 'Backend & Systems',
-    items: [
-      { name: 'Node.js', icon: Terminal },
-      { name: 'TypeScript', icon: Code2 },
-      { name: 'Supabase', icon: Database }
-    ]
-  },
-  {
-    category: 'Low-Level',
-    items: [
-      { name: 'C++', icon: Cpu },
-      { name: 'C#', icon: Layers },
-      { name: 'Rust', icon: Zap }
-    ]
-  }
+  { name: 'React', icon: SiReact },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'Vite', icon: SiVite },
+  { name: 'Framer Motion', icon: Workflow },
+  { name: 'PostCSS', icon: SiPostcss },
+  { name: 'ESLint', icon: SiEslint },
+  { name: 'Node.js', icon: SiNodedotjs },
+  { name: 'Supabase', icon: SiSupabase },
+  { name: 'C++', icon: SiCplusplus },
+  { name: 'C#', icon: SiDotnet },
+  { name: 'Rust', icon: SiRust }
 ]
 
 const focus = [
@@ -85,7 +47,6 @@ const focus = [
 ]
 
 export default function About() {
-  const avatarUrl = useRobloxAvatar(ROBLOX_USER_ID)
   const s1 = useScramble('A small studio. ', 42, 300)
   const s2 = useScramble('Serious craft.', 42, 700)
 
@@ -133,50 +94,31 @@ export default function About() {
               <div>
                 <p className="font-display text-base font-semibold">RealDzolat</p>
                 <p className="mt-0.5 text-sm text-white/55">Founder · Celestial Core</p>
-                <a
-                  href="https://www.roblox.com/users/783467725/profile"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-1 inline-block font-mono text-[11px] uppercase tracking-wider text-nebula-blue hover:text-white transition-colors"
-                >
-                  Roblox profile →
-                </a>
               </div>
             </div>
 
             <div className="glass glow-border relative rounded-3xl p-6 transition-colors">
-              <h2 className="font-display text-base font-semibold mb-8">
+              <h2 className="font-display text-base font-semibold mb-6">
                 Tech Stack
               </h2>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
-                variants={stagger(0.08)}
-                className="space-y-8"
+                variants={stagger(0.06)}
+                className="flex flex-wrap gap-3"
               >
-                {techStack.map(({ category, items }) => (
-                  <motion.div key={category} variants={fadeUp}>
-                    <h3 className="font-mono text-xs text-nebula-blue tracking-wider uppercase mb-4">
-                      {category}
-                    </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {items.map(({ name, icon: Icon }) => (
-                        <motion.div
-                          key={name}
-                          variants={fadeUp}
-                          whileHover={{ y: -3, scale: 1.05 }}
-                          className="group flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-2 py-4 text-center transition hover:border-nebula-blue/40 hover:bg-white/[0.06] hover:shadow-glow-sm"
-                        >
-                          <span className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-nebula-blue/25 to-nebula-purple/25 ring-1 ring-white/10 group-hover:from-nebula-blue/40 group-hover:to-nebula-purple/40 transition-colors">
-                            <Icon className="h-5 w-5 text-nebula-blue group-hover:text-nebula-gold transition-colors" />
-                          </span>
-                          <span className="font-mono text-[11px] uppercase tracking-wider text-white/75 group-hover:text-white transition-colors">
-                            {name}
-                          </span>
-                        </motion.div>
-                      ))}
-                    </div>
+                {techStack.map(({ name, icon: Icon }) => (
+                  <motion.div
+                    key={name}
+                    variants={fadeUp}
+                    whileHover={{ y: -2, scale: 1.08 }}
+                    className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 transition hover:border-nebula-blue/40 hover:bg-white/[0.06] hover:shadow-glow-sm"
+                  >
+                    <Icon className="h-5 w-5 text-nebula-blue group-hover:text-nebula-gold transition-colors" />
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-white/75 group-hover:text-white transition-colors">
+                      {name}
+                    </span>
                   </motion.div>
                 ))}
               </motion.div>
