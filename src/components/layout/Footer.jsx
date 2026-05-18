@@ -3,7 +3,6 @@ import { Github, Mail, MessageSquare, ArrowUpRight } from 'lucide-react'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
-  { to: '/games', label: 'Games' },
   { to: '/projects', label: 'Projects' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' }
@@ -73,7 +72,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-5 text-xs text-white/40 md:flex-row md:items-center md:px-8">
           <p>© {year} Celestial Core · RealDzolat. All rights reserved.</p>
-          <p className="font-mono">built in the void · v0.1.0</p>
+          <p className="font-mono">built in the void · v0.2.0</p>
         </div>
       </div>
     </footer>
