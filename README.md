@@ -73,7 +73,6 @@ npm run preview
     │       └── CustomCursor.jsx
     └── pages/
         ├── Home.jsx
-        ├── Games.jsx
         ├── Projects.jsx
         ├── About.jsx
         └── Contact.jsx
@@ -111,7 +110,6 @@ git push origin main
 Every piece of site copy that wasn't supplied yet is marked `PLACEHOLDER` in the source. Quick wins:
 
 - **Featured projects** — `src/pages/Home.jsx` → `highlights` array.
-- **Roblox titles** — `src/pages/Games.jsx` → `games` array.
 - **Software projects** — `src/pages/Projects.jsx` → `projects` array.
 - **Bio + milestones** — `src/pages/About.jsx` → `milestones` array.
 - **Contact info** — `src/pages/Contact.jsx` and `src/components/layout/Footer.jsx`.
