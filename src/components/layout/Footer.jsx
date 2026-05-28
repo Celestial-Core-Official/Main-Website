@@ -5,7 +5,8 @@ const footerLinks = [
   { to: '/', label: 'Home' },
   { to: '/projects', label: 'Projects' },
   { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' }
+  { to: '/contact', label: 'Contact' },
+  { to: '/privacy', label: 'Privacy Policy' }
 ]
 
 export default function Footer() {
