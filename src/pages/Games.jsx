@@ -13,7 +13,7 @@ const games = [
     tags: ['Luau', 'Rojo', 'Fusion'],
     accent: 'blue',
     href: '#',
-    image: '/games/factory-beyond.png',
+    image: '/logo_bg.png',
     status: 'Pre-Alpha'
   }
 ]

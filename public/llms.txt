@@ -1,0 +1,16 @@
+# Celestial Core
+
+> RealDzolat's portfolio for production software, Roblox/Luau game systems, React projects, and scalable engineering craft.
+
+Primary pages:
+- Home: https://celestialcore.cc/
+- Games: https://celestialcore.cc/games
+- Projects: https://celestialcore.cc/projects
+- About: https://celestialcore.cc/about
+- Contact: https://celestialcore.cc/contact
+
+Owner:
+- RealDzolat
+- Email: admin@celestialcore.cc
+- GitHub: https://github.com/Dzolat
+- Organization: https://github.com/Celestial-Core-Official

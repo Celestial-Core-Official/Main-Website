@@ -3,6 +3,7 @@ import { Github, Mail, MessageSquare, ArrowUpRight } from 'lucide-react'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
+  { to: '/games', label: 'Games' },
   { to: '/projects', label: 'Projects' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
