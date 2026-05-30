@@ -4,7 +4,6 @@
 
 Primary pages:
 - Home: https://celestialcore.cc/
-- Games: https://celestialcore.cc/games
 - Projects: https://celestialcore.cc/projects
 - About: https://celestialcore.cc/about
 - Contact: https://celestialcore.cc/contact

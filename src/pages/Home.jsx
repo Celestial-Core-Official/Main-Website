@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, Gamepad2, Code2, Cpu, Sparkles,
+  ArrowRight, Code2, Cpu, Sparkles,
   Radio, User
 } from 'lucide-react'
 import Button from '../components/ui/Button.jsx'

@@ -29,15 +29,6 @@ export const routeSeo = {
     priority: '1.0',
     changefreq: 'weekly'
   },
-  '/games': {
-    path: '/games',
-    title: 'Games | Celestial Core Roblox and Luau Engineering',
-    description:
-      'Games by Celestial Core: Roblox experiences, Luau architecture, simulation systems, and long-lived worlds engineered by RealDzolat.',
-    schemaType: 'CollectionPage',
-    priority: '0.9',
-    changefreq: 'monthly'
-  },
   '/projects': {
     path: '/projects',
     title: 'Projects | Celestial Core Software Engineering Portfolio',

@@ -5,7 +5,6 @@ import Layout from './components/layout/Layout.jsx'
 import SEO from './components/SEO.jsx'
 
 const Home = lazy(() => import('./pages/Home.jsx'))
-const Games = lazy(() => import('./pages/Games.jsx'))
 const Projects = lazy(() => import('./pages/Projects.jsx'))
 const About = lazy(() => import('./pages/About.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
@@ -22,7 +21,6 @@ export default function App() {
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
-            <Route path="/games" element={<Games />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

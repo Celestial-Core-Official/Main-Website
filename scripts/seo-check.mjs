@@ -10,10 +10,8 @@ const indexHtml = read('index.html');
 const packageJson = JSON.parse(read('package.json'));
 const vercelConfig = JSON.parse(read('vercel.json'));
 const app = read('src/App.jsx');
-const navbar = read('src/components/layout/Navbar.jsx');
-const footer = read('src/components/layout/Footer.jsx');
 
-const requiredRoutes = ['/', '/games', '/projects', '/about', '/contact', '/privacy'];
+const requiredRoutes = ['/', '/projects', '/about', '/contact', '/privacy'];
 
 assert.match(
   indexHtml,
@@ -34,9 +32,6 @@ assert.match(indexHtml, /<script[^>]+type="application\/ld\+json"[^>]*>[\s\S]*"@
 for (const route of requiredRoutes) {
   assert.match(app, new RegExp(`path="${route === '/' ? '\\/' : route}"`), `${route} should be routed`);
 }
-
-assert.match(navbar, /to: '\/games'/, 'primary navigation should link to /games');
-assert.match(footer, /to: '\/games'/, 'footer navigation should link to /games');
 
 assert.equal(existsSync(join(root, 'src/utils/seo.js')), true, 'route SEO metadata should live in src/utils/seo.js');
 assert.equal(existsSync(join(root, 'src/components/SEO.jsx')), true, 'SEO component should manage route metadata');
