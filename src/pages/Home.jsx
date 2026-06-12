@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, Code2, Cpu, Sparkles,
+  ArrowRight, Sparkles,
   Radio, User
 } from 'lucide-react'
 import Button from '../components/ui/Button.jsx'
@@ -99,8 +99,8 @@ export default function Home() {
                 <Button to="/projects" variant="primary" icon={ArrowRight}>
                   View My Projects
                 </Button>
-                <Button to="/contact" variant="outline">
-                  Contact Us
+                <Button to="/about" variant="outline" icon={User}>
+                  About Me
                 </Button>
               </motion.div>
 
@@ -222,12 +222,15 @@ export default function Home() {
                 View All Projects
               </Button>
             </div>
-            <div className="hidden items-center justify-center border-l border-white/5 p-10 lg:flex">
-              <div className="relative">
-                <div className="flex h-36 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-nebula-purple/20 to-nebula-gold/10 ring-1 ring-white/10">
-                  <Code2 className="h-16 w-16 text-nebula-purple/60" />
-                </div>
-                <div className="absolute -inset-6 -z-10 rounded-3xl bg-nebula-purple/5 blur-2xl" />
+            <div className="hidden w-[440px] items-center justify-center border-l border-white/5 p-10 lg:flex">
+              <div className="relative w-full">
+                <img
+                  src="/projects/celestial.png"
+                  alt="Celestial Website project preview"
+                  className="aspect-[16/10] w-full rounded-2xl object-cover ring-1 ring-white/10 shadow-glow-purple"
+                />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-nebula-purple/20 via-transparent to-nebula-gold/10" />
+                <div className="absolute -inset-6 -z-10 rounded-3xl bg-nebula-purple/10 blur-2xl" />
               </div>
             </div>
           </div>
